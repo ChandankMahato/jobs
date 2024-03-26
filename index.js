@@ -119,7 +119,7 @@ function calculateRating() {
     let templateString = `You Should `;
     if (rating >= 70) {
         templateString += `definitely join this job as it meets most of my preferences.`;
-    } else if (rating >= 50) {
+    } else if (rating >= 30) {
         templateString += `consider joining this job, but You should discuss some aspects further.`;
     } else {
         templateString += `not join this job as it doesn't meet my preferences.`;
