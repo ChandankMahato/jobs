@@ -105,13 +105,22 @@ function calculateRating() {
     const learningEnvironmentRating = parseInt(learningEnvironmentChecked.getAttribute('data-rating'));
     const perksRating = parseInt(perksChecked.getAttribute('data-rating'));
 
-    const rating = (locationRating * locationPriority +
-                    companyProfileRating * companyProfilePriority +
-                    salaryRating * salaryPriority +
-                    workingHoursRating * workingHoursPriority +
-                    certificationRating * certificationPriority +
-                    learningEnvironmentRating * learningEnvironmentPriority +
-                    perksRating * perksPriority) / 700;
+    // Reverse priority values when parameter value is 10 (low)
+    const reversedLocationPriority = locationPriority === 10 ? 100 : locationPriority;
+    const reversedCompanyProfilePriority = companyProfilePriority === 10 ? 100 : companyProfilePriority;
+    const reversedSalaryPriority = salaryPriority === 10 ? 100 : salaryPriority;
+    const reversedWorkingHoursPriority = workingHoursPriority === 10 ? 100 : workingHoursPriority;
+    const reversedCertificationPriority = certificationPriority === 10 ? 100 : certificationPriority;
+    const reversedLearningEnvironmentPriority = learningEnvironmentPriority === 10 ? 100 : learningEnvironmentPriority;
+    const reversedPerksPriority = perksPriority === 10 ? 100 : perksPriority;
+
+    const rating = (locationRating * reversedLocationPriority +
+                    companyProfileRating * reversedCompanyProfilePriority +
+                    salaryRating * reversedSalaryPriority +
+                    workingHoursRating * reversedWorkingHoursPriority +
+                    certificationRating * reversedCertificationPriority +
+                    learningEnvironmentRating * reversedLearningEnvironmentPriority +
+                    perksRating * reversedPerksPriority) / 700;
 
     const ratingResult = document.getElementById('ratingResult');
     ratingResult.innerHTML = `<p>Based on your selection, the rating for "${jobTitle}" at "${companyName}" is ${rating}.</p>`;
@@ -119,7 +128,7 @@ function calculateRating() {
     let templateString = `You Should `;
     if (rating >= 70) {
         templateString += `definitely join this job as it meets most of my preferences.`;
-    } else if (rating >= 50) {
+    } else if (rating >= 40) {
         templateString += `consider joining this job, but You should discuss some aspects further.`;
     } else {
         templateString += `not join this job as it doesn't meet my preferences.`;
