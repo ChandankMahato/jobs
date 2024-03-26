@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Selection Tool</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <header>
+        <h1>Job Selection Tool</h1>
+    </header>
+    <main>
+        <div id="jobForm">
+            <div class="description">
+                <p>Welcome to the Job Selection Tool!</p>
+                <p>This tool helps you evaluate job opportunities based on your preferences. Select your job parameters,
+                    prioritize
+                    them, and calculate the rating to determine if the job is suitable for you.</p>
+                <p>If the calculated rating is:</p>
+                <ul>
+                    <li>70 or above: You would definitely join this job as it meets most of your preferences.</li>
+                    <li>50 to 69: You would consider joining this job, but you would like to discuss some aspects
+                        further.</li>
+                    <li>Below 50: You would not join this job as it doesn't meet your preferences.</li>
+                </ul>
+            </div>
+            <label for="jobTitle">Job Title:</label>
+            <input type="text" id="jobTitle" required><br>
+
+            <label for="companyName">Company Name:</label>
+            <input type="text" id="companyName" required><br>
+
+            <div class="fieldset-container">
+                <fieldset class="half-width">
+                    <legend>Location</legend>
+                    <label><input type="radio" name="location" value="100" data-rating="100"> Near</label>
+                    <label><input type="radio" name="location" value="50" data-rating="50"> Far</label>
+                    <label><input type="radio" name="location" value="0" data-rating="0"> Very Far</label>
+                    <select id="locationPriority" required>
+                        <option value="" disabled selected>Select Priority</option>
+                        <option value="100">High</option>
+                        <option value="50">Medium</option>
+                        <option value="0">Low</option>
+                    </select>
+                </fieldset>
+
+                <fieldset class="half-width">
+                    <legend>Company Profile & Office</legend>
+                    <label><input type="radio" name="companyProfile" value="100" data-rating="100">
+                        International</label>
+                    <label><input type="radio" name="companyProfile" value="50" data-rating="50"> National</label>
+                    <label><input type="radio" name="companyProfile" value="0" data-rating="0"> Local</label>
+                    <select id="companyProfilePriority" required>
+                        <option value="" disabled selected>Select Priority</option>
+                        <option value="100">High</option>
+                        <option value="50">Medium</option>
+                        <option value="0">Low</option>
+                    </select>
+                </fieldset>
+
+                <fieldset class="half-width">
+                    <legend>Salary</legend>
+                    <label><input type="radio" name="salary" value="100" data-rating="100"> Above 20K</label>
+                    <label><input type="radio" name="salary" value="50" data-rating="50"> Below 20K</label>
+                    <label><input type="radio" name="salary" value="0" data-rating="0"> Below 10K</label>
+                    <select id="salaryPriority" required>
+                        <option value="" disabled selected>Select Priority</option>
+                        <option value="100">High</option>
+                        <option value="50">Medium</option>
+                        <option value="0">Low</option>
+                    </select>
+                </fieldset>
+
+                <fieldset class="half-width">
+                    <legend>Working Hours and Days</legend>
+                    <label><input type="radio" name="workingHours" value="100" data-rating="100"> Hybrid</label>
+                    <label><input type="radio" name="workingHours" value="50" data-rating="50"> 5 days</label>
+                    <label><input type="radio" name="workingHours" value="0" data-rating="0"> 6 days</label>
+                    <select id="workingHoursPriority" required>
+                        <option value="" disabled selected>Select Priority</option>
+                        <option value="100">High</option>
+                        <option value="50">Medium</option>
+                        <option value="0">Low</option>
+                    </select>
+                </fieldset>
+
+                <fieldset class="half-width">
+                    <legend>Certification</legend>
+                    <label><input type="radio" name="certification" value="100" data-rating="100"> Confirm</label>
+                    <label><input type="radio" name="certification" value="50" data-rating="50"> Need To Talk</label>
+                    <label><input type="radio" name="certification" value="0" data-rating="0"> Suspicious</label>
+                    <select id="certificationPriority" required>
+                        <option value="" disabled selected>Select Priority</option>
+                        <option value="100">High</option>
+                        <option value="50">Medium</option>
+                        <option value="0">Low</option>
+                    </select>
+                </fieldset>
+
+                <fieldset class="half-width">
+                    <legend>Learning Environment</legend>
+                    <label><input type="radio" name="learningEnvironment" value="100" data-rating="100">
+                        Training</label>
+                    <label><input type="radio" name="learningEnvironment" value="50" data-rating="50"> Self</label>
+                    <label><input type="radio" name="learningEnvironment" value="0" data-rating="0"> Full
+                        Responsible</label>
+                    <select id="learningEnvironmentPriority" required>
+                        <option value="" disabled selected>Select Priority</option>
+                        <option value="100">High</option>
+                        <option value="50">Medium</option>
+                        <option value="0">Low</option>
+                    </select>
+                </fieldset>
+
+                <fieldset class="half-width">
+                    <legend>Perks</legend>
+                    <label><input type="radio" name="perks" value="100" data-rating="100"> Food/Snacks</label>
+                    <label><input type="radio" name="perks" value="50" data-rating="50"> Snacks</label>
+                    <label><input type="radio" name="perks" value="0" data-rating="0"> Nothing</label>
+                    <select id="perksPriority" required>
+                        <option value="" disabled selected>Select Priority</option>
+                        <option value="100">High</option>
+                        <option value="50">Medium</option>
+                        <option value="0">Low</option>
+                    </select>
+                </fieldset>
+            </div>
+
+            <button type="button" onclick="calculateRating()">Calculate Rating</button>
+        </div>
+
+        <div id="ratingResult"></div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Job Selection Tool</p>
+    </footer>
+    <script src="index.js"></script>
+</body>
+
+</html>
